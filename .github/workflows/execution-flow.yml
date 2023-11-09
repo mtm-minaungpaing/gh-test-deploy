@@ -21,6 +21,8 @@ jobs:
       - name: Lint code
         run: npm run lint
   test:
+    env: 
+      PORT: 8080
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -40,6 +42,10 @@ jobs:
         with:
           name: test-report
           path: test.json
+      - name: Show env
+        run: |
+          echo "env: ${{ env.PORT }}"
+          echo "env: $PORT"
   build:
     needs: test
     runs-on: ubuntu-latest

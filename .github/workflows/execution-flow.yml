@@ -23,6 +23,7 @@ jobs:
   test:
     env: 
       PORT: 8080
+      SECRET: ${{ secrets.REPO_SECRET }}
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -46,6 +47,8 @@ jobs:
         run: |
           echo "env: ${{ env.PORT }}"
           echo "env: $PORT"
+          echo "repo: ${{ env.SECRET }}"
+          echo "env: $SECRET"
   build:
     needs: test
     runs-on: ubuntu-latest
